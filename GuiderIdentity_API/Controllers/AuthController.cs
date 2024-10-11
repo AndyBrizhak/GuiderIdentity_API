@@ -6,7 +6,11 @@ using GuiderIdentity_API.Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
+using System.Security.Claims;
+using System.Text;
 
 namespace GuiderIdentity_API.Controllers
 {
@@ -47,11 +51,31 @@ namespace GuiderIdentity_API.Controllers
                 return BadRequest(_response);
             }
             //generate JWT Token
+            var roles = await _userManager.GetRolesAsync(userFromDb);
+            JwtSecurityTokenHandler tokenHandler = new();
+
+            byte[] key = Encoding.ASCII.GetBytes(secretKey);
+
+            SecurityTokenDescriptor tokenDescriptor = new()
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim("fullName", userFromDb.Name),
+                    new Claim("id", userFromDb.Id.ToString()),
+                    new Claim(ClaimTypes.Email, userFromDb.UserName.ToString()),
+                    new Claim(ClaimTypes.Role, roles.FirstOrDefault()),
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = 
+                new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
 
             LoginResponseDTO loginResponse = new()
             {
                 Email = userFromDb.Email,
-                Token = "test token"
+                Token = tokenHandler.WriteToken(token)
             };
             if (loginResponse.Email == null || string.IsNullOrEmpty(loginResponse.Token))
             {
