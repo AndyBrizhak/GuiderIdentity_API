@@ -106,7 +106,6 @@ The JWT token contains the following claims:
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "expiresIn": "7d"
 }
 ```
 
@@ -119,30 +118,14 @@ The API returns structured error responses for:
 
 ### Configuration
 
-#### JWT Settings
 
-In `appsettings.json`, you can configure the JWT token settings:
-```json
-"JwtSettings": {
-  "Secret": "your_secret_key",
-  "Issuer": "your_issuer",
-  "Audience": "your_audience",
-  "TokenLifetime": "7.00:00:00" // 7 days
-}
 ```
 
 ### Extending the API
 
 - **Refresh Tokens**: You can implement refresh tokens to handle token expiration more smoothly.
 - **User Roles**: ASP.NET Identity supports user roles, which can be utilized for role-based access control.
-- **Two-Factor Authentication (2FA)**: ASP.NET Identity can be extended to include 2FA for enhanced security.
 
-## Running Tests
-
-To run the tests for this project:
-```bash
-dotnet test
-```
 
 ## Contributing
 
@@ -154,15 +137,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ```
 
-### Описание разделов:
-- **Features** — основные возможности API.
-- **Tech Stack** — список технологий.
-- **Getting Started** — шаги для настройки и запуска проекта.
-- **Endpoints** — описание основных API маршрутов.
-- **JWT Token Structure** — структура токена JWT.
-- **Error Handling** — как обрабатываются ошибки.
-- **Configuration** — параметры настройки токенов.
-- **Extending the API** — как можно расширить функционал.
-- **Contributing** и **License** — для работы над проектом и лицензирования.
 
-Этот `README.md` охватывает основные аспекты вашего проекта и может быть изменён под ваши конкретные требования.
