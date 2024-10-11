@@ -22,14 +22,14 @@ This project is a RESTful API built on ASP.NET Core that handles user registrati
 
 ### Prerequisites
 
-- [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - SQL Server (or any other database provider supported by Entity Framework Core)
 
 ### Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://[github.com/AndyBrizhak/GuiderIdentity_API].git
    cd your-repository
    ```
 
