@@ -1,6 +1,3 @@
-Вот пример содержимого для файла `README.md` вашего репозитория на GitHub для проекта API на .NET, который обрабатывает запросы на регистрацию и аутентификацию пользователей с использованием JWT Bearer токенов.
-
-```markdown
 # User Authentication and Registration API with JWT in .NET
 
 This project is a RESTful API built on ASP.NET Core that handles user registration, login, and authentication. Upon successful authentication, the API returns a JWT (JSON Web Token) for securing subsequent requests.
