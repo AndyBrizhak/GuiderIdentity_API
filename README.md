@@ -38,7 +38,7 @@ This project is a RESTful API built on ASP.NET Core that handles user registrati
    Update the connection string in `appsettings.json`:
    ```json
    "ConnectionStrings": {
-     "DefaultConnection": "Server=your_server;Database=your_db;User Id=your_user;Password=your_password;"
+     "DefaultConnection": "Server=.; Database=GuiderIdentity_API; TrustServerCertificate=True; Trusted_Connection=True;"
    }
    ```
 
